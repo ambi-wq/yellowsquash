@@ -1,0 +1,57 @@
+from django.urls import path
+from django.conf.urls import url
+from .views import *
+
+urlpatterns = [
+    path('get-user/', UserList.as_view(), name="user list"),
+    path('user-email-verification/', SendEmailVerificationOtp.as_view(), name="get otp for email/mobile verification"),
+    path('verify-email/', VerifyEmailOtp.as_view(), name="verify mobile/email"),
+    path('complete-signup/', CompleteSignup.as_view(), name="complete signup with other required data for user/expert"),
+    path('create-user', CreateUser.as_view(), name="create_user"),
+    path('social_media_auth/', SocialMediaAuth.as_view(), name="social media auth"),
+    path('update-user', UpdateUser.as_view(), name="update_user"),
+    path('update-user-basic-details/', UpdateUserBasicDetails.as_view(), name="update user basic details"),
+    path('user-profile-complete/', UserProfileCompleted.as_view(), name="User Profile Completed status update"),
+    path('get-education-details/', GetMyEducationDetails.as_view(), name="add current user education details"),
+    path('add-education/', AddUserEducation.as_view(), name="add user education details"),
+    path('update-education/<education_id>', UpdateUserEducation.as_view(), name="update user education details"),
+    path('remove-education/<int:education_id>', DeleteUserEducation.as_view(), name="remove user education details"),
+    path('get-experts/', ExpertListApi.as_view(), name="experts list"),
+    path('experts-list-search/', ExpertListSearchApi.as_view(), name="experts list"),
+    path("get-filter-expert/", ExpertListSearchApi.as_view(), name="serach"),
+    path('get-user-intersts/', ExpertiesOrIntrestList.as_view(), name="user intrest list"),
+    path('get-user-experties/', ExpertiesOrIntrestList.as_view(), name="expert experties list"),
+    url(r'^expert-details/(?P<pk>\d+)$', ExpertDetails.as_view(), name="get expert details"),
+    path('add-favorite-expert', AddFavoriteExpert.as_view(), name="add expert to user favorites"),
+    path('remove-favorite-expert', RemoveFavoriteExpert.as_view(), name="remove expert from user favorites"),
+    path('get-favorite-experts/', FavoriteExpertsListApi.as_view(), name="favorite experts list"),
+    path('get-category/', CategoryListApi.as_view(), name="category list"),
+    path('add-interest-expertise', AddIntrestOrExpertise.as_view(), name="add interest/expertise to user"),
+    path('remove-interest-expertise', RemoveIntrestOrExpertise.as_view(), name="remove interest/expertise of user"),
+    path('get-payment-request/<batch_id>/', GetPaymentOrderRequest.as_view(), name="get payment request"),
+    path('post-payment-response', PostPaymentOrderResponse.as_view(), name="post payment response"),
+    path('add-user-device-token', AddUserDeviceToken.as_view(), name="add user device token"),
+    path('total-expert', ExpertTotalCount.as_view(), name="total count of expert"),
+
+    path('get-location', LocationList.as_view(), name="get location list"),
+    path('get-language', LanguageList.as_view(), name="get language list"),
+    path('get-timezone', TimezoneList.as_view(), name="get timezone list"),
+    path('get-expertise', ExpertiseList.as_view(), name="get expertise list"),
+    path('get-expert-team-member', ExpertTeamMembers.as_view(), name="get expert team member"),
+    path('add-expert-team-member', ExpertTeamMembers.as_view(), name="add expert team member"),
+    path('update-expert-team-member/<id>', ExpertTeamMembers.as_view(), name="update expert team member"),
+    path('delete-expert-team-member/<id>', ExpertTeamMembers.as_view(), name="delete expert team member"),
+    path('get-role', RoleList.as_view(), name="get role list"),
+    path('get-all-category', AllCategoryList.as_view(), name="get all category list"),
+    path('get-degree',DegreeCertificationList.as_view(),name="get all degree certification data"),
+    path('change-team-member-status/<id>',ChangeExpertTeamMemberStatus.as_view(),name="change status of expert team member"),
+    path('get-expert-list',ExpertCategoryWiseList.as_view(),name="get all experts with or without categories"),
+    path('category-list',AllCategory.as_view(),name='get all category'),
+    # Created new api for favourite experts
+    path('create-favourite-expert/<expert_id>',FavouriteExpertAPI.as_view(),name="add favourite expert"),
+    path('delete-favourite-expert/<expert_id>',FavouriteExpertAPI.as_view(),name="delete favourite expert"),
+    path('favourite-expert-list',ExpertFavouriteList.as_view(),name="favourite expert list"),
+    path('expert_detail/<expert_id>',ExpertDetail.as_view(),name="expert detail"),
+
+
+]

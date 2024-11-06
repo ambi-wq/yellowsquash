@@ -1,0 +1,9 @@
+FROM python:3.8.0-buster
+LABEL maintainer "OPSKUBE"
+RUN apt update -y && apt install -y bash python3-tk ghostscript libgl1-mesa-dev
+COPY  requirements.txt  app/
+#COPY . app/
+WORKDIR /app
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
+#CMD python -u manage.py collectstatic

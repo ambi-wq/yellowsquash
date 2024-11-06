@@ -1,0 +1,36 @@
+# django
+Django==2.2.6
+django-celery-beat
+django-cors-headers
+django-filter
+django-prettyjson
+django-solo==1.1.3
+django-loginas>=0.3
+djangorestframework==3.10.3
+djangorestframework-simplejwt
+django-admin-list-filter-dropdown
+django-admin-numeric-filter
+django-admin-rangefilter
+gunicorn>=19.0
+drf-yasg
+psycopg2-binary
+djoser==0.5.4
+django-import-export == 2.5.0
+
+#chat here  
+futures>=3.2.0; python_version<'3'
+grpcio>=1.19.0
+Pillow>=5.4.1
+requests>=2.21.0
+tinode-grpc>=0.16.0
+prompt_toolkit>=2.0.10
+icalendar
+# payment gateways
+razorpay>=1.2.0
+
+# for aws 
+boto3
+python-decouple
+
+# firebase notify service
+pyfcm

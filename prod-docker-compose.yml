@@ -1,0 +1,27 @@
+version: "3.7"
+services:
+  web:
+   #image: base_image
+    build:
+      context: .
+      dockerfile: ./Dockerfile.prod
+    ports:
+      - "8002:8002"
+    environment:
+        - ENV=prod
+        - TZ=Asia/Kolkata
+        - PYTHONDONTWRITEBYTECODE=1
+    restart: always
+    volumes:
+        - /etc/timezone:/etc/timezone:ro
+        - /etc/localtime:/etc/localtime:ro
+        - /var/log/containers:/var/log/containers 
+        #- $PWD:/app
+        #- /home/aditya/docker_volume/settings_.py:$PWD/app/yellowsquash/settings.py
+    command: gunicorn --workers=4 --timeout=600 --bind 0.0.0.0:8002 yellowsquash.wsgi:application
+    networks:
+        ys_net: {aliases: [admin_api]}
+networks:
+  ys_net:
+    external:
+      name: ys_net
